@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supercell</title>
+    <meta name="description" content="Visit Supercell.com and find out more about us and our games.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            background: #000;
+            padding: 2rem 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-left: auto;
+        }
+
+        .icon-link {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.6rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .icon-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #f5f5f5;
+            padding: 0;
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-full-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-wrapper {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-left {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-center {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .hero-character {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            color: #000;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .watch-video-btn {
+            background: #1f7aeb;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .watch-video-btn:hover {
+            background: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(31, 122, 235, 0.3);
+        }
+        .hero {
+            background: linear-gradient(180deg, #f5f5f5 0%, #fff 100%);
+            padding: 80px 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            border-radius: 0 0 12px 12px;
+        }
+
+        /* Features Grid Section */
+        .features-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e5e5e5;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-card-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card-image.games {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .feature-card-image.careers {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .feature-card-content {
+            padding: 2rem;
+        }
+
+        .feature-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-card-link {
+            display: inline-block;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card-link:hover {
+            color: #0052a3;
+        }
+
+        /* News Section */
+        .news-section {
+            background: #f9f9f9;
+            padding: 80px 20px;
+        }
+
+        .news-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 2.5rem;
+        }
+
+        .news-item {
+            background: white;
+            border-radius: 0;
+            overflow: visible;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-item:hover {
+            transform: none;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 0;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-tag {
+            display: block;
+            background: transparent;
+            color: #666;
+            padding: 0;
+            border-radius: 0;
+            font-size: 0.65rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+            line-height: 1.5;
+            text-decoration: none;
+        }
+
+        .news-link {
+            display: inline-block;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin: 1rem 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .news-link:hover {
+            color: #0052a3;
+        }
+
+        .section-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 500px;
+            background: linear-gradient(135deg, #1f7aeb 0%, #1565c0 100%);
+            padding: 4rem 2rem;
+        }
+
+        .section-row.reverse {
+            direction: rtl;
+        }
+
+        .section-row.reverse > * {
+            direction: ltr;
+        }
+
+        .row-content {
+            padding: 2rem;
+            color: white;
+        }
+
+        .row-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .row-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .row-button {
+            display: inline-block;
+            background: white;
+            color: #000;
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .row-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .row-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .row-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        }
+
+        @media (max-width: 768px) {
+            .section-row {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .row-content h2 {
+                font-size: 2rem;
+            }
+
+            .row-content p {
+                font-size: 1rem;
+            }
+        }
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 20px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 2rem;
+        }
+
+        .social-section h3,
+        .store-section h3 {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: auto;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a img {
+            width: 100%;
+            height: auto;
+        }
+
+        .social-links a:hover {
+            opacity: 0.7;
+        }
+
+        .store-section {
+            text-align: right;
+        }
+
+        .store-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: flex-end;
+        }
+
+        .store-link {
+            background: transparent;
+            color: #000;
+            padding: 0;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .store-link img {
+            height: 40px;
+            width: auto;
+        }
+
+        .store-link:hover {
+            opacity: 0.8;
+        }
+
+        .footer-nav {
+            margin-bottom: 0;
+            padding: 0;
+            border-bottom: none;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-nav a,
+        .manage-cookies {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font: inherit;
+        }
+
+        .footer-nav a:hover,
+        .manage-cookies:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom address {
+            font-style: normal;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .footer-bottom address p {
+            margin: 0;
+        }
+
+        .footer-logo {
+            text-align: right;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .footer-top {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .store-section {
+                text-align: left;
+            }
+
+            .store-links {
+                align-items: flex-start;
+            }
+
+            .footer-nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-logo {
+                text-align: left;
+            }
+        }
+    
+
+        .footer-info {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="supercell_logo.50e3c1ff.webp" alt="Supercell logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#games">Games</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="icon-link">STORE</a>
+                <a href="#" class="icon-link">C</a>
+                <a href="#" class="icon-link">M</a>
+                <a href="#" class="icon-link">ID</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="frontpage_hero.8bc64969.webp" alt="Supercell game characters" class="hero-full-image">
+        <div class="hero-wrapper">
+            <div class="hero-left">
+            </div>
+            <div class="hero-center">
+                <div class="hero-content">
+                    <h1>SUPERCELL</h1>
+                    <p>Makers of Hay Day, Clash of Clans, Boom Beach, Clash Royale, Brawl Stars, Squad Busters and mo.co.</p>
+                    <button class="watch-video-btn">Watch Video</button>
+                </div>
+            </div>
+            <div class="hero-right">
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section" id="news">
+        <div class="news-container">
+            <h2 class="section-title">LATEST NEWS</h2>
+            <div class="news-grid">
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="ilkkasBlogPost_hero_thumbnail_2026.webp" alt="The Best Games Haven't Been Made Yet">
+                    </div>
+                    <span class="news-tag">Ilkka's Long Texts</span>
+                    <h3 class="news-title">The Best Games Haven't Been Made Yet</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="failosophy-web-cover-1__1_.webp" alt="What We've Learned from Failures">
+                    </div>
+                    <span class="news-tag">Careers</span>
+                    <h3 class="news-title">What We've Learned from Failures</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="Hay-Day_Neighborhood-Event_02871_1500x1130.webp" alt="Grow Together">
+                    </div>
+                    <span class="news-tag">Hay Day</span>
+                    <h3 class="news-title">Grow Together With Hay Day's Neighborhood Event</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="store-thumbnail.webp" alt="Africa Ecosystem">
+                    </div>
+                    <span class="news-tag">Good Stuff</span>
+                    <h3 class="news-title">A Commitment to Africa's Games Ecosystem</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="20251130_Adam-Lakomy_Brawl-Stars-WF_14467.webp" alt="World Finals">
+                    </div>
+                    <span class="news-tag">Brawl Stars</span>
+                    <h3 class="news-title">Crazy Raccoon crowned champions at the Brawl Stars World Finals 2025</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="store-thumbnail (1).webp" alt="Regional Pricing">
+                    </div>
+                    <span class="news-tag">Clash Royale</span>
+                    <h3 class="news-title">Clash Royale is Rolling Out Regional Pricing – Globally</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="Squad_news_-_30.10_-_1.webp" alt="Squad Development">
+                    </div>
+                    <span class="news-tag">Squad Busters</span>
+                    <h3 class="news-title">Squad Busters Development is Ending, Final Update in December 2025</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="FINAL_-_1026_Loading_Screens__Update_64_-_Stranger_Things__3840x2160.webp" alt="Stranger Things">
+                    </div>
+                    <span class="news-tag">Brawl Stars</span>
+                    <h3 class="news-title">Brawl Stars' Starr Park Turns Upside Down in Stranger Things Crossover</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="CR_KeyArt_BabyDragonEvolution_FInal_V01.webp" alt="Baby Dragon Evolution">
+                    </div>
+                    <span class="news-tag">Clash Royale</span>
+                    <h3 class="news-title">Clash Royale Partners With bbno$ For Baby Dragon Evolution Launch</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="BS_SUBWAY_SURFERS_FINAL__1_.webp" alt="Subway Surfers">
+                    </div>
+                    <span class="news-tag">Brawl Stars</span>
+                    <h3 class="news-title">Brawl Stars x Subway Surfers Has Arrived!</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="drussila-thumbnail.webp" alt="New Head of Games">
+                    </div>
+                    <span class="news-tag">People</span>
+                    <h3 class="news-title">Welcoming Drussila Hollanda as our new Head of New Games</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="Untitled-2.webp" alt="mo.co Update">
+                    </div>
+                    <span class="news-tag">mo.co</span>
+                    <h3 class="news-title">Exciting Update From mo.co Co-founder, Luna</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="IMG_8025.webp" alt="Fake Stores">
+                    </div>
+                    <span class="news-tag">News</span>
+                    <h3 class="news-title">Stay Safe: Spotting Fake Supercell Store Websites</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="FINAL_keyart_-_Squad_Busters_x_Sonic_-_17th_June.webp" alt="Squad Sonic">
+                    </div>
+                    <span class="news-tag">Squad Busters</span>
+                    <h3 class="news-title">Sonic the Hedgehog Enters the Squad Busters Universe</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="Inferno_Dragon_1130.webp" alt="Inferno Dragon">
+                    </div>
+                    <span class="news-tag">Clash Royale</span>
+                    <h3 class="news-title">Inferno Dragon Is Finally Getting His Evolution In Clash Royale</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="CLSH_AnncImage_v03_1500x1130_Patrick_Flatten.webp" alt="Netflix Series">
+                    </div>
+                    <span class="news-tag">Entertainment & Partnerships</span>
+                    <h3 class="news-title">CLASH is invading Netflix with a new animated series</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="SB_SocialBanners_HeroesComing_website_1500x1130.webp" alt="Squad Heroes">
+                    </div>
+                    <span class="news-tag">Squad Busters</span>
+                    <h3 class="news-title">Heroes and Squaddies Arrive in Squad Busters</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="DSC04714.webp" alt="Helsinki Pride">
+                    </div>
+                    <span class="news-tag">Good Stuff</span>
+                    <h3 class="news-title">Four Years of Unity and Community: Better Games Together Continues Supporting Helsinki Pride</h3>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="WWE_x_Clash_of_Clans_Key_Art_2.webp" alt="WWE WrestleMania">
+                    </div>
+                    <span class="news-tag">Clash of Clans</span>
+                    <h3 class="news-title">WWE Superstars Take Over Clash of Clans Ahead of WrestleMania 41</h3>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Sections -->
+    <!-- Nita Section -->
+    <section class="section-row">
+        <div class="row-content">
+            <h2>GAMES</h2>
+            <p>Our dream is to create games that as many people as possible play for years and that are remembered forever.</p>
+            <a href="#" class="row-button">SEE GAMES</a>
+        </div>
+        <div class="row-image">
+            <img src="nita.2f16c856.webp" alt="Nita from Brawl Stars">
+        </div>
+    </section>
+
+    <!-- Mini Pekka Section -->
+    <section class="section-row reverse">
+        <div class="row-content">
+            <h2>CAREERS</h2>
+            <p>Join us to create games that excite and help our players around the world make memories.</p>
+            <a href="#" class="row-button">SEE CAREERS</a>
+        </div>
+        <div class="row-image">
+            <img src="miniPekka.7e91c758.webp" alt="Mini P.E.K.K.A from Clash Royale">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="social-section">
+                    <h3>Follow us on</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="YouTube"><img src="some_youtube.fd048a44.webp" alt="YouTube"></a>
+                        <a href="#" aria-label="Facebook"><img src="some_facebook.25d7be3c.webp" alt="Facebook"></a>
+                        <a href="#" aria-label="Instagram"><img src="some_instagram.73b957d1.webp" alt="Instagram"></a>
+                        <a href="#" aria-label="Twitter"><img src="some_twitter.ed800386.webp" alt="Twitter"></a>
+                        <a href="#" aria-label="LinkedIn"><img src="some_linkedin.c11ee8b3.webp" alt="LinkedIn"></a>
+                        <a href="#" aria-label="Glassdoor"><img src="some_glassdoor.3e4af2f0.webp" alt="Glassdoor"></a>
+                    </div>
+                </div>
+                <div class="store-section">
+                    <h3>Download our games from</h3>
+                    <div class="store-links">
+                        <a href="#" class="store-link"><img src="appstore.58a06803.webp" alt="App Store"></a>
+                        <a href="#" class="store-link"><img src="googleplay.c3b4e2ea.webp" alt="Google Play"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <address>
+                    <p>Supercell Oy</p>
+                    <p>Jätkäsaarenlaituri 1</p>
+                    <p>00180 Helsinki</p>
+                    <p>Finland</p>
+                </address>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Parent's Guide</a></li>
+                        <li><a href="#">Safe and Fair Play Policy</a></li>
+                        <li><a href="#">Accessibility Statement</a></li>
+                        <li><a href="#">Other Legal Docs</a></li>
+                        <li><a href="#">Media Center</a></li>
+                        <li><a href="#">Our Domains</a></li>
+                        <li><button class="manage-cookies">Manage Cookies</button></li>
+                    </ul>
+                </nav>
+                <div class="footer-logo">
+                    <img src="supercell_logo.50e3c1ff.webp" alt="Supercell">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
